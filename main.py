@@ -68,9 +68,10 @@ def main():
             response = requests.get(url)
             response.raise_for_status()
             check_for_redirect(response)
+            book_parameters = parse_book_page(response, url)
             url = 'https://tululu.org/txt.php'
-            download_txt(book_id, url, title.strip())
-            download_image(full_book_img_url)
+            download_txt(book_id, url, book_parameters['title'].strip())
+            download_image(book_parameters['img_url'])
         except requests.exceptions.HTTPError:
             print("книга не найдена")
 
