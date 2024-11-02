@@ -61,7 +61,7 @@ def main():
                         help='Введите айди конечной книги',
                         default=10)
     args = parser.parse_args()
-    for i in range(args.start_id, args.end_id):
+    for page in range(args.start_id, args.end_id):
         try:
             url = f'https://tululu.org/b{i}/'
             response = requests.get(url)
