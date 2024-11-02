@@ -55,9 +55,11 @@ def main():
     parser = argparse.ArgumentParser(
         description='Программа помогает скачивать изображение, текст и информацию о книгах.')
     parser.add_argument('--start_id', type=int,
-                        help='Введите айди начала книги')
+                        help='Введите айди начала книги',
+                        default=1)
     parser.add_argument('--end_id', type=int,
-                        help='Введите айди конечной книги')
+                        help='Введите айди конечной книги',
+                        default=10)
     args = parser.parse_args()
     for i in range(args.start_id, args.end_id):
         try:
