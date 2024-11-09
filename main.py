@@ -4,6 +4,7 @@ from urllib.parse import urljoin, urlsplit
 import os
 from pathvalidate import sanitize_filename
 import argparse
+from time import sleep
 
 
 def check_for_redirect(response):
@@ -74,6 +75,9 @@ def main():
             download_image(book_parameters['img_url'])
         except requests.exceptions.HTTPError:
             print("книга не найдена")
+        except requests.exceptions.ConnectionError:
+            print("Попытка переподключения")
+            sleep(20)
 
 
 if __name__ == '__main__':
